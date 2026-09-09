@@ -5,20 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Marlo</title>
   <meta name="description" content="Marlo — coming soon." />
-  <link rel="icon" href="logo.svg" type="image/svg+xml" />
+  <!-- Inter is the closest widely available match to the geometric/humanist marlo wordmark -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
       color-scheme: light;
       --bg: #ffffff;
       --ink: #0a0a0a;
       --muted: #6b6b6b;
+      /* Coming soon base; brand is exactly 15× this */
+      --soon: clamp(0.55rem, 1.15vw, 0.78rem);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
       height: 100%;
       background: var(--bg);
       color: var(--ink);
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-family: Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;
       -webkit-font-smoothing: antialiased;
     }
     main {
@@ -28,23 +33,32 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 2rem 1.25rem 4rem;
+      padding: 2rem 1rem 4rem;
       text-align: center;
-      gap: 0.65rem;
     }
-    .logo {
-      width: min(820px, 92vw);
-      height: auto;
-      display: block;
+    .stack {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.35em; /* relative to brand size so it stays tight under marlo */
+    }
+    .brand {
+      font-family: Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: calc(var(--soon) * 15);
+      font-weight: 500;
+      letter-spacing: -0.035em;
+      line-height: 0.95;
+      text-transform: lowercase;
+      color: var(--ink);
     }
     .coming {
-      font-size: clamp(1.15rem, 3.2vw, 1.55rem);
-      font-weight: 400;
-      letter-spacing: 0.06em;
+      font-family: Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: var(--soon);
+      font-weight: 500;
+      letter-spacing: 0.08em;
       text-transform: lowercase;
       color: var(--ink);
       line-height: 1.2;
-      margin-top: 0;
     }
     footer {
       position: fixed;
@@ -60,8 +74,10 @@
 </head>
 <body>
   <main>
-    <img class="logo" src="logo.svg" alt="marlo" width="820" height="205" />
-    <p class="coming">Coming soon</p>
+    <div class="stack">
+      <h1 class="brand">marlo</h1>
+      <p class="coming">Coming soon</p>
+    </div>
   </main>
   <footer>© Marlo</footer>
 </body>
