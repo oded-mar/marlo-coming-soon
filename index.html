@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Marlo</title>
   <meta name="description" content="Marlo — coming soon." />
-  <!-- Inter is the closest widely available match to the geometric/humanist marlo wordmark -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&display=swap" rel="stylesheet" />
@@ -15,8 +14,6 @@
       --bg: #ffffff;
       --ink: #0a0a0a;
       --muted: #6b6b6b;
-      /* Coming soon base; brand is exactly 15× this */
-      --soon: clamp(0.55rem, 1.15vw, 0.78rem);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
@@ -33,29 +30,37 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 2rem 1rem 4rem;
+      padding: 1.5rem 0.75rem 4rem;
       text-align: center;
+      overflow: hidden;
     }
+    /* Base unit for the pair. brand = 15em, coming = 1em → exact 15× */
     .stack {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.35em; /* relative to brand size so it stays tight under marlo */
+      justify-content: center;
+      /* Fit the 15em wordmark on screen: unit ≈ viewport / 15 / ~5.5 chars */
+      font-size: clamp(7px, 1.35vw, 14px);
+      gap: 0.45em; /* relative to base unit (= coming soon size) */
+      line-height: 1;
+      max-width: 100%;
     }
     .brand {
       font-family: Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: calc(var(--soon) * 15);
+      font-size: 15em; /* exactly 15 × .coming */
       font-weight: 500;
-      letter-spacing: -0.035em;
-      line-height: 0.95;
+      letter-spacing: -0.04em;
+      line-height: 0.9;
       text-transform: lowercase;
       color: var(--ink);
+      white-space: nowrap;
     }
     .coming {
       font-family: Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: var(--soon);
+      font-size: 1em; /* base */
       font-weight: 500;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
       text-transform: lowercase;
       color: var(--ink);
       line-height: 1.2;
@@ -76,7 +81,7 @@
   <main>
     <div class="stack">
       <h1 class="brand">marlo</h1>
-      <p class="coming">Coming soon</p>
+      <p class="coming">coming soon</p>
     </div>
   </main>
   <footer>© Marlo</footer>
